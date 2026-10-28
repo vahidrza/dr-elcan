@@ -1,0 +1,50 @@
+[
+  {
+    "id": "r001",
+    "stars": 5,
+    "author": "Zəhra Quliyeva",
+    "text_az": "Dr. Aygün xanıma breket müalicəmi həvalə etdim. 14 ay ərzində hər detalı izah etdi, narahat olmağa heç vaxt yer qoymadı. Hər ziyarətdə prosesi ətraflı şərh edirdi. Nəticə gözlədiyimdən də gözəl oldu. Çox tövsiyyə edirəm!",
+    "text_ru": "Доверила доктору Айгюн своё брекет-лечение. На протяжении 14 месяцев она объясняла каждую деталь и ни разу не давала повода для беспокойства. На каждом визите подробно рассказывала о процессе. Результат превзошёл все ожидания. Очень рекомендую!",
+    "text_en": "I entrusted Dr. Aygün with my braces treatment. Over 14 months she explained every detail and never gave me cause for concern. At every visit she walked me through the process. The result was even better than I had hoped. Highly recommend!"
+  },
+  {
+    "id": "r002",
+    "stars": 5,
+    "author": "Tural Həsənov",
+    "text_az": "İki il bundan əvvəl Dr. Elcana implant üçün müraciət etdim. Əməliyyat tamamilə ağrısız keçdi, sağalma müddəti planladığı kimi oldu. İndi implantın orada olduğunu hiss etmirəm belə. Peşəkar yanaşma üçün çox sağ olun!",
+    "text_ru": "Два года назад обратился к доктору Эльчану по поводу имплантации. Операция прошла совершенно безболезненно, срок заживления совпал с планом. Сейчас я вообще не чувствую, что там имплант. Большое спасибо за профессионализм!",
+    "text_en": "Two years ago I came to Dr. Elcan for an implant. The procedure was completely painless and the healing went exactly as planned. Now I don't even feel the implant is there. Thank you for such a professional approach!"
+  },
+  {
+    "id": "r003",
+    "stars": 5,
+    "author": "Nərmin İsmayılova",
+    "text_az": "Zirkonium tac müalicəsi üçün Dr. Aygünə getdim. Proses 3 aya yaxın sürdü, amma nəticə heyrətamizdir — rəngi, forması, hər şey mükəmməl. Bütün detallar nəzərə alınmışdı. Əsl peşəkardır, yüz faiz tövsiyyə edirəm.",
+    "text_ru": "Обратилась к доктору Айгюн по поводу циркониевых коронок. Процесс занял около 3 месяцев, но результат поразительный — цвет, форма, всё идеально. Все детали были учтены. Настоящий профессионал, рекомендую на сто процентов.",
+    "text_en": "I went to Dr. Aygün for zirconia crown treatment. The process took about 3 months, but the result is amazing — the colour, the shape, everything is perfect. Every detail was considered. A true professional — I recommend her one hundred percent."
+  },
+  {
+    "id": "r004",
+    "stars": 5,
+    "author": "Kamran Rəhimov",
+    "text_az": "Uzun illər dişlərimin vəziyyətindən narahat idim. Dr. Aygün bir illik ortodontik müalicə planı hazırladı, hər addımı ətraflı izah etdi. Müalicənin sonunda tamamilə fərqli bir gülüşə qovuşdum. Çox minnətdaram!",
+    "text_ru": "Долгие годы меня беспокоило состояние зубов. Доктор Айгюн составила годовой план ортодонтического лечения и подробно объяснила каждый шаг. По окончании лечения я обрёл совершенно другую улыбку. Очень благодарен!",
+    "text_en": "For many years I was concerned about my teeth. Dr. Aygün prepared a year-long orthodontic treatment plan and explained every step in detail. By the end of treatment I had a completely transformed smile. I am extremely grateful!"
+  },
+  {
+    "id": "r005",
+    "stars": 5,
+    "author": "Sevinc Abbasova",
+    "text_az": "Gülüş dizaynı üçün Dr. Elcana müraciət etdim. Detallı müayinə, düzgün diaqnostika və dəqiq planlaşdırma ilə furnirlərim hazırlandı. Nəticə sanki fotoşəkildən çıxmış kimidir. Əllərinizə sağlıq!",
+    "text_ru": "Обратилась к доктору Эльчану для дизайна улыбки. После детального осмотра, точной диагностики и тщательного планирования мне изготовили виниры. Результат — будто вышел из журнала. Золотые руки!",
+    "text_en": "I went to Dr. Elcan for a smile design. After a thorough examination, precise diagnosis and careful planning, my veneers were crafted. The result looks like it came straight out of a magazine. Thank you so much!"
+  },
+  {
+    "id": "r006",
+    "stars": 5,
+    "author": "Orxan Nəsirov",
+    "text_az": "Həm ağardma, həm də bir neçə diş müalicəsi üçün Dr. Elcana getdim. Bir neçə seans tələb etdi, amma hər dəfə eyni diqqət və dəqiqliklə yanaşdı. Nəticəyə tam razıyam, ətrafımdakılara mütləq tövsiyyə edirəm.",
+    "text_ru": "Обращался к доктору Эльчану и по поводу отбеливания, и по поводу лечения нескольких зубов. Потребовалось несколько сеансов, но каждый раз — одинаковое внимание и точность. Результатом полностью доволен, обязательно рекомендую.",
+    "text_en": "I went to Dr. Elcan for both whitening and treatment of several teeth. It took a few sessions, but each time I received the same care and precision. I am fully satisfied with the result and will definitely recommend him."
+  }
+]

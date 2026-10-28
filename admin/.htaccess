@@ -1,0 +1,7 @@
+Options -Indexes
+
+# Block direct access to the config file (contains password hash)
+<Files "config.json">
+    Order deny,allow
+    Deny from all
+</Files>

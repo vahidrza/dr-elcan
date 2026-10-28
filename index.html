@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Baku Estetic Clinic - Dr. Aygün Rzayeva və Dr. Elcan Həmidli - Professional Stomatoloji Xidmətlər">
+    <title>Dr. Aygün & Dr. Elcan | Baku Estetic Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="#hero" class="nav__logo">
+            <img src="images/logo.png" alt="Baku Estetic Clinic" class="nav__logo-img">
+        </a>
+        <ul class="nav__list" id="navList">
+            <li><a href="#hero"     class="nav__link" data-i18n="nav_home">Ana Səhifə</a></li>
+            <li><a href="#services" class="nav__link" data-i18n="nav_services">Xidmətlər</a></li>
+            <li><a href="#doctors"  class="nav__link" data-i18n="nav_doctors">Həkimlər</a></li>
+            <li><a href="#schedule" class="nav__link" data-i18n="nav_schedule">Cədvəl</a></li>
+            <li><a href="#gallery"  class="nav__link" data-i18n="nav_gallery">Qalereya</a></li>
+            <li><a href="#reviews"  class="nav__link" data-i18n="nav_reviews">Rəylər</a></li>
+            <li><a href="#faq"      class="nav__link" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="#book"     class="nav__link nav__link--cta" data-i18n="nav_book">Randevu</a></li>
+            <li><a href="#contact"  class="nav__link" data-i18n="nav_contact">Əlaqə</a></li>
+        </ul>
+        <div class="nav__actions">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="az">AZ</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero__slides">
+        <div class="hero__slide hero__slide--video active">
+            <video muted playsinline>
+                <source src="videos/hero1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero__slide hero__slide--video">
+            <video muted playsinline>
+                <source src="videos/hero2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero__slide hero__slide--video">
+            <video muted playsinline>
+                <source src="videos/hero3.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero__slide hero__slide--video">
+            <video muted playsinline>
+                <source src="videos/hero4.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+        <h1 class="hero__title" data-i18n-html="hero_title">Sağlam Gülüşlər,<br>Gözəl Həyat</h1>
+        <p class="hero__subtitle" data-i18n="hero_subtitle">Bakıda peşəkar stomatoloji xidmətlər</p>
+        <div class="hero__btns">
+            <a href="#book"    class="btn btn--primary" data-i18n="hero_cta">Randevu Al</a>
+            <a href="#doctors" class="btn btn--outline"  data-i18n="hero_cta2">Həkimlər</a>
+        </div>
+    </div>
+    <div class="hero__scroll-hint"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="services_title">Xidmətlərimiz</h2>
+            <p class="section__subtitle" data-i18n="services_subtitle">Hər bir xəstəyə fərdi yanaşma</p>
+        </div>
+        <div class="services__grid">
+            <div class="service-card reveal">
+                <div class="service-card__icon"><i class="fas fa-tooth"></i></div>
+                <h3 class="service-card__title" data-i18n="service1_title">Ümumi Stomatologiya</h3>
+                <p class="service-card__desc"  data-i18n="service1_desc">Diş müalicəsi, dolgu, çıxarış, profilaktika və diş gigiyenası</p>
+                <div class="service-card__doctor"><i class="fas fa-user-md"></i> <span data-i18n="dr_aygun_name">Dr. Aygün Rzayeva</span></div>
+            </div>
+            <div class="service-card service-card--accent reveal">
+                <div class="service-card__icon"><i class="fas fa-teeth"></i></div>
+                <h3 class="service-card__title" data-i18n="service2_title">Ortodontiya</h3>
+                <p class="service-card__desc"  data-i18n="service2_desc">Qapaqdüzəltmə, breket sistemləri, ağız boşluğunun müalicəsi</p>
+                <div class="service-card__doctor"><i class="fas fa-user-md"></i> <span data-i18n="dr_aygun_name">Dr. Aygün Rzayeva</span></div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-card__icon"><i class="fas fa-star"></i></div>
+                <h3 class="service-card__title" data-i18n="service3_title">Estetik Stomatologiya</h3>
+                <p class="service-card__desc"  data-i18n="service3_desc">Ağardma, furnirlər, zirconyum taclar, gülüş dizaynı</p>
+                <div class="service-card__doctor"><i class="fas fa-user-md"></i> <span data-i18n="dr_elcan_name">Dr. Elcan Həmidli</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="section doctors" id="doctors">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="doctors_title">Həkimlərimiz</h2>
+        </div>
+        <div class="doctors__grid">
+
+            <div class="doctor-card reveal">
+                <div class="doctor-card__photo">
+                    <img src="images/dr-aygun.jpg" alt="Dr. Aygün Rzayeva">
+                </div>
+                <div class="doctor-card__info">
+                    <h3 class="doctor-card__name"  data-i18n="dr_aygun_name">Dr. Aygün Rzayeva</h3>
+                    <p class="doctor-card__title2" data-i18n="dr_aygun_title">Stomatoloq &amp; Ortodont</p>
+                    <p class="doctor-card__bio"    data-i18n="dr_aygun_bio">Azərbaycan Tibb Universitetini bitirmiş Dr. Aygün Rzayeva stomatologiya və ortodontiya sahəsində ixtisaslaşmış həkimdir. Ailə yanaşması və dəqiq planlamayla hər bir xəstəyə sağlam gülüş bəxş edir.</p>
+                    <div class="doctor-card__details">
+                        <div class="doctor-card__detail">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span data-i18n="dr_aygun_edu">Azərbaycan Tibb Universiteti</span>
+                        </div>
+                        <div class="doctor-card__detail">
+                            <i class="fas fa-stethoscope"></i>
+                            <span data-i18n="dr_aygun_spec">Stomatologiya &amp; Ortodontiya</span>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/dr.aygunnn" target="_blank" rel="noopener" class="doctor-card__social">
+                        <i class="fab fa-instagram"></i> @dr.aygunnn
+                    </a>
+                </div>
+            </div>
+
+            <div class="doctor-card doctor-card--alt reveal">
+                <div class="doctor-card__photo">
+                    <img src="images/dr-elcan.jpg" alt="Dr. Elcan Həmidli">
+                </div>
+                <div class="doctor-card__info">
+                    <h3 class="doctor-card__name"  data-i18n="dr_elcan_name">Dr. Elcan Həmidli</h3>
+                    <p class="doctor-card__title2" data-i18n="dr_elcan_title">Estetik Stomatoloq</p>
+                    <p class="doctor-card__bio"    data-i18n="dr_elcan_bio">Dr. Elcan Həmidli estetik stomatologiya sahəsinin mütəxəssisidir. "Some more smile" fəlsəfəsiylə hər gülüşü bir sənət əsərinə çevirir.</p>
+                    <div class="doctor-card__details">
+                        <div class="doctor-card__detail">
+                            <i class="fas fa-stethoscope"></i>
+                            <span data-i18n="dr_elcan_spec">Estetik Stomatologiya</span>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap">
+                        <a href="https://www.instagram.com/dr.elcann/" target="_blank" rel="noopener" class="doctor-card__social">
+                            <i class="fab fa-instagram"></i> @dr.elcann
+                        </a>
+                        <a href="https://www.youtube.com/@dr.Elcann" target="_blank" rel="noopener" class="doctor-card__social doctor-card__social--yt">
+                            <i class="fab fa-youtube"></i> @dr.Elcann
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section schedule" id="schedule">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="schedule_title">Qəbul Saatları</h2>
+            <p class="section__subtitle" data-i18n="schedule_subtitle">Baku Estetic Clinic – Hanifa Əlasgarov küç. 67</p>
+        </div>
+        <div class="schedule__table-wrap">
+            <table class="schedule__table">
+                <thead>
+                    <tr>
+                        <th data-i18n="schedule_day_col">Gün</th>
+                        <th data-i18n="schedule_hours_col">İş saatları</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="day-cell" data-i18n="mon">Bazar ertəsi</td>
+                        <td class="cell-afternoon" data-i18n="schedule_afternoon">Günortadan sonra</td>
+                    </tr>
+                    <tr>
+                        <td class="day-cell" data-i18n="tue">Çərşənbə axşamı</td>
+                        <td class="cell-morning" data-i18n="schedule_morning">Günortaya qədər</td>
+                    </tr>
+                    <tr>
+                        <td class="day-cell" data-i18n="wed">Çərşənbə</td>
+                        <td class="cell-afternoon" data-i18n="schedule_afternoon">Günortadan sonra</td>
+                    </tr>
+                    <tr>
+                        <td class="day-cell" data-i18n="thu">Cümə axşamı</td>
+                        <td class="cell-morning" data-i18n="schedule_morning">Günortaya qədər</td>
+                    </tr>
+                    <tr>
+                        <td class="day-cell" data-i18n="fri">Cümə</td>
+                        <td class="cell-afternoon" data-i18n="schedule_afternoon">Günortadan sonra</td>
+                    </tr>
+                    <tr>
+                        <td class="day-cell" data-i18n="sat">Şənbə</td>
+                        <td class="cell-morning" data-i18n="schedule_morning">Günortaya qədər</td>
+                    </tr>
+                    <tr class="row-sunday">
+                        <td class="day-cell" data-i18n="sun">Bazar</td>
+                        <td class="cell-closed" data-i18n="schedule_closed">İstirahət</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="gallery_title">Qalereya</h2>
+            <p class="section__subtitle" data-i18n="gallery_subtitle">Müalicə öncəsi &amp; sonrası</p>
+        </div>
+        <div class="gallery__grid" id="galleryGrid">
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/work1.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Damaq genişləndirici ilə çənənin böyüməsinə təkan verdik, beləliklə dişlər öz mövqeyində düzgün yerləşdilər ✨ Çənədəki darlıq və dişlərdə sıxlıq aradan qaldırıldı ✅</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/work2.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">6 ayın nəticəsi 👌🏻</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/work3.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Gözəl nəticə təsadüf deyil — düzgün diaqnostika və düzgün müalicə planının nəticəsidir 😌✅</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/work4.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Breket müalicəsindən sonra pasiyentimin ürəkdən təbəssümünü sizinlə bölüşürəm ☺️🤍✨</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/work7.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Pasiyentimdən gələn feedback photo 💖 (from China) Bu gülüşün də memarı bizik 🫠✨</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/work6.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Cəmi 2 ay sonra əldə olunan nəticə — üst çənənin irəli istiqamətdə inkişafında və dişlərin münasibətində nəzərəçarpan dəyişiklik. Erkən yaşda düzgün diaqnostika və vaxtında müdaxilə ortodontik müalicənin gedişində böyük rol oynayır 🤍</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new1.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Smile transformation 😍</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new2.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">✨ Daha düzgün diş sırası, daha harmonik gülüş.</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new4.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Uşaq yaşlarında tətbiq olunan üst çənə genişləndirici aparat dar çənənin genişlənməsinə, dişlər üçün yer yaradılmasına və nəfəsalmanın yaxşılaşmasına kömək edir 🦷✨</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new5.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Gülüşünüzü gizlətməkdən, rahat gülümsəməyə doğru ✨ Ortodontik müalicə ilə həyat keyfiyyətiniz də dəyişir</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new6.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Gülüşünüzü təsadüfə buraxmayın 🦷 Hər detal diqqətlə seçilir, hər addım planlı şəkildə icra olunur. Məqsədimiz — həm sağlam, həm də estetik mükəmməl nəticə ✨</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new7.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Açıq dişləmli pasiyentimizin müalicəsinə start verdik 👍🏻</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new8.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Bu diş sümük daxilində horizontal vəziyyətdə yerləşmişdi və düzgün gəliş istiqamətində deyildi. Lazımi yer yaradılaraq diş uğurla öz mövqeyinə gətirildi 😌</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new9.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Ən gözəl gülüşünüz bizim əsas məqsədimizdir! Estetik diş həkimliyində innovativ texnologiyalarımızla gülüşünüzü daha da parlaqlaşdırırıq 💫</p>
+            </div>
+            <div class="gallery__card reveal">
+                <div class="gallery__single">
+                    <img src="images/gallery/new10.jpg" alt="Müalicə nəticəsi" loading="lazy">
+                </div>
+                <p class="gallery__caption">Before/After Bleaching 🦷 İlk seansdan əldə etdiyimiz təbii görüntü 💁‍♀️</p>
+            </div>
+        </div>
+        <div class="gallery__more-wrap" id="galleryMoreWrap">
+            <button class="gallery__more-btn" id="galleryMoreBtn" data-i18n="gallery_load_more">Daha çox göstər</button>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="reviews_title">Xəstə Rəyləri</h2>
+            <p class="section__subtitle" data-i18n="reviews_subtitle">Xəstələrimizin həqiqi rəyləri</p>
+        </div>
+        <div class="reviews__grid" id="reviewsGrid">
+            <div class="review-card reveal">
+                <div class="review-card__stars">★★★★★</div>
+                <p class="review-card__text">"Dr. Aygün xanıma breket müalicəmi həvalə etdim. 14 ay ərzində hər detalı izah etdi, narahat olmağa heç vaxt yer qoymadı. Nəticə gözlədiyimdən də gözəl oldu. Çox tövsiyyə edirəm!"</p>
+                <div class="review-card__author">— Zəhra Quliyeva</div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card__stars">★★★★★</div>
+                <p class="review-card__text">"İki il bundan əvvəl Dr. Elcana implant üçün müraciət etdim. Əməliyyat tamamilə ağrısız keçdi, sağalma müddəti planladığı kimi oldu. İndi implantın orada olduğunu hiss etmirəm belə. Peşəkar yanaşma üçün çox sağ olun!"</p>
+                <div class="review-card__author">— Tural Həsənov</div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card__stars">★★★★★</div>
+                <p class="review-card__text">"Zirkonium tac müalicəsi üçün Dr. Aygünə getdim. Proses 3 aya yaxın sürdü, amma nəticə heyrətamizdir — rəngi, forması, hər şey mükəmməl. Əsl peşəkardır, yüz faiz tövsiyyə edirəm."</p>
+                <div class="review-card__author">— Nərmin İsmayılova</div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card__stars">★★★★★</div>
+                <p class="review-card__text">"Uzun illər dişlərimin vəziyyətindən narahat idim. Dr. Aygün bir illik ortodontik müalicə planı hazırladı, hər addımı ətraflı izah etdi. Müalicənin sonunda tamamilə fərqli bir gülüşə qovuşdum. Çox minnətdaram!"</p>
+                <div class="review-card__author">— Kamran Rəhimov</div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card__stars">★★★★★</div>
+                <p class="review-card__text">"Gülüş dizaynı üçün Dr. Elcana müraciət etdim. Detallı müayinə, düzgün diaqnostika və dəqiq planlaşdırma ilə furnirlərim hazırlandı. Nəticə sanki fotoşəkildən çıxmış kimidir. Əllərinizə sağlıq!"</p>
+                <div class="review-card__author">— Sevinc Abbasova</div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card__stars">★★★★★</div>
+                <p class="review-card__text">"Həm ağardma, həm də bir neçə diş müalicəsi üçün Dr. Elcana getdim. Bir neçə seans tələb etdi, amma hər dəfə eyni diqqət və dəqiqliklə yanaşdı. Nəticəyə tam razıyam, ətrafımdakılara mütləq tövsiyyə edirəm."</p>
+                <div class="review-card__author">— Orxan Nəsirov</div>
+            </div>
+        </div>
+        <div class="gallery__more-wrap" id="reviewsMoreWrap">
+            <button class="gallery__more-btn" id="reviewsMoreBtn" data-i18n="reviews_load_more">Daha çox göstər</button>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="faq_title">Tez-tez Soruşulan Suallar</h2>
+            <p class="section__subtitle" data-i18n="faq_subtitle">Cavabını axtardığınız sual burada ola bilər</p>
+        </div>
+        <div class="faq__list">
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq1_q">Breket müalicəsi nə qədər müddət davam edir?</button>
+                <div class="faq__a"><p data-i18n="faq1_a">Hər xəstə üçün fərqli olur — orta hesabla 12-24 ay. Diş sıxlığının dərəcəsi, çənənin vəziyyəti və müalicəyə riayət bu müddəti müəyyənləşdirir.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq2_q">Breket taxmaq ağrılıdırmı?</button>
+                <div class="faq__a"><p data-i18n="faq2_a">Qurulduqdan sonra ilk 3-5 gün yüngül həssaslıq olur — bu tamamilə normaldır. Sonrakı ziyarətlərdə bu hiss azalır. Əksər xəstələrimiz gündəlik həyatlarını heç bir problem olmadan davam etdirir.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq3_q">İmplant əməliyyatı nə qədər çəkir?</button>
+                <div class="faq__a"><p data-i18n="faq3_a">Bir implantın yerləşdirilməsi 30-60 dəqiqə çəkir, lokal anesteziya altında aparılır. Sağalma müddəti 2-4 ay arasında dəyişir. Müalicə boyu sizi izləyirik.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq4_q">Diş ağartmanın nəticəsi nə qədər davam edir?</button>
+                <div class="faq__a"><p data-i18n="faq4_a">Düzgün qulluqla 1-2 il. Qəhvə, çay, siqaret kimi maddələrdən qaçınmaq nəticənin ömrünü uzadır. Zəruri hallarda qısa seansla yeniləmə mümkündür.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq5_q">Vinir nədir, kimə uyğundur?</button>
+                <div class="faq__a"><p data-i18n="faq5_a">Vinirlər diş üzərinə yapışdırılan ultranazik keramika lövhəciklərdir. Rəng, forma və ölçü narahatlıqlarını həll edir. 1-2 ziyarətdə hazırlanır, ağrısız prosedurdur.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq6_q">Uşaqlar üçün ortodontiyaya nə vaxt başlamaq lazımdır?</button>
+                <div class="faq__a"><p data-i18n="faq6_a">İlk ortodontik müayinəni 6-7 yaşda keçirməyi tövsiyyə edirik. Erkən diaqnostika bir çox problemi vaxtında aşkarlamağa imkan verir. Aktiv müalicəyə isə adətən 10-13 yaşda başlanır.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq7_q">Zirkonium tac adi tacdan nə ilə fərqlənir?</button>
+                <div class="faq__a"><p data-i18n="faq7_a">Zirkonium metaldan fərqli olaraq şəffafdır — natural diş görünüşü verir. Daha güclü, bioloji cəhətdən uyğun və allergen deyildir. Estetik üstünlüyü açıq-aşkardır.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq8_q">Randevu necə ala bilərəm?</button>
+                <div class="faq__a"><p data-i18n="faq8_a">Saytdakı "Randevu Al" formasını doldurun — ya da +994 50 436 63 66 nömrəsinə zəng edin, yaxud WhatsApp vasitəsilə yazın. Ən qısa zamanda sizinlə əlaqə saxlayacağıq.</p></div>
+            </div>
+            <div class="faq__item reveal">
+                <button class="faq__q" data-i18n="faq9_q">Ortodontiya nədir?</button>
+                <div class="faq__a"><p data-i18n="faq9_a">Ortodontiya diş və çənənin düzgün olmayan vəziyyətini müalicə edən diş həkimliyi sahəsidir. Sıxlıqlı, aralı dişlər, çarpaz dişləmə və düzgün olmayan qapanma ortodontik müalicə ilə həll edilir. Əsas müalicə üsulları: breket sistemləri, şəffaf alignerlər və çənə aparatlarıdır.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOOK APPOINTMENT -->
+<section class="section book" id="book">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="book_title">Randevu Al</h2>
+            <p class="section__subtitle" data-i18n="book_subtitle">Bizimlə əlaqə saxlayın</p>
+        </div>
+        <div class="book__wrap">
+            <!--
+                CONNECT FORM AFTER LAUNCH:
+                1. Go to https://formspree.io and create a free account
+                2. Create a new form — it will give you an endpoint like https://formspree.io/f/xyzabcde
+                3. Change the <form> tag below to:
+                   <form class="book__form" id="bookForm" action="https://formspree.io/f/YOUR_ID" method="POST">
+                4. Remove the e.preventDefault() line in main.js
+            -->
+            <form class="book__form" id="bookForm" novalidate>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="formName" data-i18n="book_name">Ad Soyad</label>
+                        <input type="text" class="form__input" id="formName" name="name" required autocomplete="name">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="formPhone" data-i18n="book_phone">Telefon nömrəsi</label>
+                        <input type="tel" class="form__input" id="formPhone" name="phone" required autocomplete="tel">
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="formDoctor" data-i18n="book_doctor">Həkim seçin</label>
+                        <select class="form__input form__select" id="formDoctor" name="doctor">
+                            <option value="any"   data-i18n="book_doctor_any">Fərq etməz</option>
+                            <option value="aygun" data-i18n="book_doctor_aygun">Dr. Aygün Rzayeva</option>
+                            <option value="elcan" data-i18n="book_doctor_elcan">Dr. Elcan Həmidli</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="formService" data-i18n="book_service">Xidmət növü</label>
+                        <select class="form__input form__select" id="formService" name="service">
+                            <option value="general"   data-i18n="book_service1">Ümumi stomatologiya</option>
+                            <option value="ortho"     data-i18n="book_service2">Ortodontiya</option>
+                            <option value="aesthetic" data-i18n="book_service3">Estetik stomatologiya</option>
+                            <option value="consult"   data-i18n="book_service4">Konsultasiya</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="formDate" data-i18n="book_date">Üstünlük verilən tarix</label>
+                        <input type="date" class="form__input" id="formDate" name="date">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="formNote" data-i18n="book_note">Qeyd (ixtiyari)</label>
+                        <input type="text" class="form__input" id="formNote" name="note">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full" id="formSubmit" data-i18n="book_submit">Göndər</button>
+                <div class="form__success" id="formSuccess" style="display:none;">
+                    <i class="fas fa-check-circle"></i>
+                    <span data-i18n="book_success">Müraciətiniz qəbul edildi! Tezliklə sizinlə əlaqə saxlanılacaq.</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title" data-i18n="contact_title">Əlaqə</h2>
+        </div>
+        <div class="contact__grid">
+            <div class="contact__info">
+
+                <div class="contact__item">
+                    <div class="contact__icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4 data-i18n="contact_address">Ünvan</h4>
+                        <p>Hanifa Əlasgarov küç. 67<br>Bakı, Azərbaycan</p>
+                    </div>
+                </div>
+
+                <div class="contact__item">
+                    <div class="contact__icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h4 data-i18n="contact_phone">Telefon</h4>
+                        <p><a href="tel:+994504366366" data-contact="phone">+994 50 436 63 66</a></p>
+                    </div>
+                </div>
+
+                <div class="contact__item">
+                    <div class="contact__icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4 data-i18n="contact_email">E-poçt</h4>
+                        <p><a href="mailto:dr.elcanhemidli@gmail.com" data-contact="email">dr.elcanhemidli@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact__item">
+                    <div class="contact__icon" style="background:rgba(37,211,102,0.12);color:#25D366"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/994504366366" target="_blank" rel="noopener">+994 50 436 63 66</a></p>
+                    </div>
+                </div>
+
+                <div class="contact__navigate">
+                    <h4 data-i18n="contact_navigate">Naviqasiya</h4>
+                    <div class="map-btns">
+                        <a href="https://maps.google.com/?q=Hanifa+Alasgarov+67+Baku+Azerbaijan" target="_blank" rel="noopener" class="map-btn map-btn--google">
+                            <i class="fab fa-google"></i> <span data-i18n="contact_google">Google Maps</span>
+                        </a>
+                        <a href="https://maps.yandex.ru/?text=Hanifa+Alasgarov+67+Baku+Azerbaijan" target="_blank" rel="noopener" class="map-btn map-btn--yandex">
+                            <i class="fas fa-map"></i> <span data-i18n="contact_yandex">Yandex Maps</span>
+                        </a>
+                        <a href="https://waze.com/ul?q=Hanifa+Alasgarov+67+Baku" target="_blank" rel="noopener" class="map-btn map-btn--waze">
+                            <i class="fas fa-car"></i> <span data-i18n="contact_waze">Waze</span>
+                        </a>
+                        <a href="https://2gis.az/baku/search/Hanifa%20Alasgarov%2067" target="_blank" rel="noopener" class="map-btn map-btn--gis">
+                            <i class="fas fa-globe"></i> <span data-i18n="contact_gis">2GIS</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contact__map">
+                <iframe
+                    src="https://maps.google.com/maps?q=Hanifa+Alasgarov+67+Baku+Azerbaijan&output=embed&z=16"
+                    width="100%"
+                    height="420"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    title="Baku Estetic Clinic">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__inner">
+<p class="footer__copy">© <span id="year"></span> Avesa Engineering. <span data-i18n="footer_rights">Bütün hüquqlar qorunur.</span></p>
+        <div class="footer__social">
+            <a href="https://www.instagram.com/dr.aygunnn/" target="_blank" rel="noopener" aria-label="Dr. Aygün Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.instagram.com/dr.elcann/" target="_blank" rel="noopener" aria-label="Dr. Elcan Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@dr.Elcann" target="_blank" rel="noopener" aria-label="Dr. Elcan YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating buttons -->
+<a href="https://wa.me/994504366366" class="fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<a href="tel:+994504366366" class="fab-call" aria-label="Call us">
+    <i class="fas fa-phone"></i>
+</a>
+
+<script src="main.js"></script>
+</body>
+</html>
