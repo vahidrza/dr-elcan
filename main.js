@@ -287,7 +287,7 @@ document.querySelectorAll('section[id]').forEach(sec => navIO.observe(sec));
 const bookForm   = document.getElementById('bookForm');
 const formSuccess = document.getElementById('formSuccess');
 
-bookForm.addEventListener('submit', e => {
+bookForm.addEventListener('submit', async e => {
   e.preventDefault();
 
   const nameEl  = document.getElementById('formName');
@@ -301,19 +301,27 @@ bookForm.addEventListener('submit', e => {
 
   if (!ok) return;
 
-  // Disable form and show success
+  const btn = document.getElementById('formSubmit');
+  btn.setAttribute('disabled', true);
+
+  try {
+    await fetch('/api/appointments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:          document.getElementById('formName').value.trim(),
+        phone:         document.getElementById('formPhone').value.trim(),
+        doctor:        document.getElementById('formDoctor').value,
+        service:       document.getElementById('formService').value,
+        preferredDate: document.getElementById('formDate').value || undefined,
+        note:          document.getElementById('formNote').value.trim()
+      })
+    });
+  } catch (_) {}
+
   bookForm.querySelectorAll('input, select, button').forEach(el => el.setAttribute('disabled', true));
   formSuccess.style.display = 'flex';
   formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-  /*
-   * TO CONNECT AFTER LAUNCH:
-   * 1. Sign up at formspree.io (free)
-   * 2. Create a form — get endpoint URL
-   * 3. Add action="YOUR_URL" method="POST" to the <form> tag
-   * 4. Remove the e.preventDefault() line above
-   * 5. Remove the lines below this comment
-   */
 });
 
 bookForm.querySelectorAll('input').forEach(i => {

@@ -86,6 +86,14 @@ img{max-width:100%;display:block}
 .alert-ok{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
 .alert-err{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
 .empty-state{text-align:center;padding:48px 20px;color:#bdc3c7;font-size:1rem}
+.appt-row{background:#f8fafc;border:1px solid #dce6f0;border-radius:10px;padding:14px 16px}
+.appt-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.appt-name{font-weight:600;font-size:.95rem}
+.appt-meta{font-size:.82rem;color:#7f8c8d;margin-top:2px}
+.appt-note{font-size:.82rem;color:#6b7280;margin-top:4px;font-style:italic}
+.appt-time{font-size:.75rem;color:#bdc3c7;margin-top:8px}
+.appt-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.appt-select{padding:5px 8px;border:1.5px solid #dce6f0;border-radius:6px;font-family:inherit;font-size:.8rem;outline:none;cursor:pointer}
 .loading{text-align:center;padding:48px;color:#7f8c8d}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}.admin-body{padding:20px 16px}.card{padding:20px 16px}.gal-grid{grid-template-columns:1fr}}
 </style>
@@ -133,6 +141,7 @@ img{max-width:100%;display:block}
   <nav class="tabs">
     <button class="tab-btn active" id="tab-btn-gallery"  onclick="showTab('gallery')">📷 Qalereya</button>
     <button class="tab-btn"        id="tab-btn-patients" onclick="showTab('patients')">👤 Xəstələr</button>
+    <button class="tab-btn"        id="tab-btn-appts"    onclick="showTab('appts')">📋 Müraciətlər</button>
     <button class="tab-btn"        id="tab-btn-settings" onclick="showTab('settings')">⚙️ Parametrlər</button>
   </nav>
   <main class="admin-body">
@@ -143,6 +152,10 @@ img{max-width:100%;display:block}
     <div id="tab-patients" style="display:none">
       <div id="patients-loading" class="loading">Yüklənir...</div>
       <div id="patients-content" style="display:none"></div>
+    </div>
+    <div id="tab-appts" style="display:none">
+      <div id="appts-loading" class="loading">Yüklənir...</div>
+      <div id="appts-content" style="display:none"></div>
     </div>
     <div id="tab-settings" style="display:none">
       <div class="card" style="max-width:440px">
@@ -283,7 +296,7 @@ function showDashboard() {
 
 // ── Tabs ──────────────────────────────────────────────────────────────────────
 function showTab(tab) {
-  ['gallery','patients','settings'].forEach(t => {
+  ['gallery','patients','appts','settings'].forEach(t => {
     document.getElementById(`tab-${t}`).style.display = t === tab ? 'block' : 'none';
     document.getElementById(`tab-btn-${t}`).classList.toggle('active', t === tab);
   });
@@ -291,6 +304,7 @@ function showTab(tab) {
     loadedTabs.add(tab);
     if (tab === 'gallery')  loadGallery();
     if (tab === 'patients') loadPatients();
+    if (tab === 'appts')    loadAppts();
   }
 }
 
@@ -658,6 +672,76 @@ async function deletePatient(id) {
     selectedPatient = null;
     loadedTabs.delete('patients');
     await loadPatients();
+  } catch(e) { alert('Xəta: ' + e.message); }
+}
+
+// ── Appointments ─────────────────────────────────────────────────────────────
+const APPT_STATUS = { new:'Yeni', contacted:'Əlaqə saxlanıldı', scheduled:'Planlaşdırıldı', done:'Tamamlandı', cancelled:'Ləğv edildi' };
+const APPT_STATUS_COLOR = { new:'#e8f0fb;color:#1a6b8a', contacted:'#fef3c7;color:#92400e', scheduled:'#d1fae5;color:#065f46', done:'#f3f4f6;color:#6b7280', cancelled:'#fee2e2;color:#991b1b' };
+const SERVICES = { general:'Ümumi stomatologiya', ortho:'Ortodontiya', aesthetic:'Estetik stomatologiya', consult:'Konsultasiya', '':'—' };
+
+async function loadAppts() {
+  try {
+    const data = await api('/appointments');
+    renderAppts(data);
+  } catch(e) {
+    document.getElementById('appts-loading').textContent = 'Xəta: ' + e.message;
+  }
+}
+
+function renderAppts(data) {
+  document.getElementById('appts-loading').style.display = 'none';
+  const c = document.getElementById('appts-content');
+  c.style.display = 'block';
+  const newCount = data.filter(a => a.status === 'new').length;
+  document.getElementById('tab-btn-appts').textContent = `📋 Müraciətlər${newCount ? ` (${newCount} yeni)` : ''}`;
+
+  const rows = data.length === 0
+    ? '<div class="empty-state">📋 Hələ müraciət yoxdur.</div>'
+    : data.map(a => {
+        const sc = APPT_STATUS_COLOR[a.status] || '';
+        return `<div class="appt-row" id="appt-${a._id}">
+          <div class="appt-top">
+            <div>
+              <div class="appt-name">${esc(a.name)}</div>
+              <div class="appt-meta">${esc(a.phone)}${a.doctor && a.doctor!=='any' ? ' · ' + esc(DOCTORS[a.doctor]||a.doctor) : ''}${a.service ? ' · ' + esc(SERVICES[a.service]||a.service) : ''}${a.preferredDate ? ' · ' + fmtDate(a.preferredDate) : ''}</div>
+              ${a.note ? `<div class="appt-note">${esc(a.note)}</div>` : ''}
+            </div>
+            <div class="appt-actions">
+              <span class="tag" style="background:${sc.split(';')[0].replace('background:','')};${sc.split(';')[1]||''}">${APPT_STATUS[a.status]||a.status}</span>
+              <select class="appt-select" onchange="updateApptStatus('${a._id}',this.value)">
+                ${Object.entries(APPT_STATUS).map(([v,l])=>`<option value="${v}" ${a.status===v?'selected':''}>${l}</option>`).join('')}
+              </select>
+              <button class="btn-sm btn-danger" onclick="deleteAppt('${a._id}')">🗑</button>
+            </div>
+          </div>
+          <div class="appt-time">${fmtDate(a.createdAt)}</div>
+        </div>`;
+      }).join('');
+
+  c.innerHTML = `
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div class="card-title" style="margin:0;border:none;padding:0">📋 Saytdan gələn müraciətlər</div>
+        <button class="btn-outline" onclick="loadedTabs.delete('appts');loadAppts()">↻ Yenilə</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">${rows}</div>
+    </div>`;
+}
+
+async function updateApptStatus(id, status) {
+  try {
+    await api(`/appointments/${id}`, 'PATCH', { status });
+    loadedTabs.delete('appts'); loadAppts();
+  } catch(e) { alert('Xəta: ' + e.message); }
+}
+
+async function deleteAppt(id) {
+  if (!confirm('Bu müraciəti silmək istəyirsiniz?')) return;
+  try {
+    await api(`/appointments/${id}`, 'DELETE');
+    document.getElementById(`appt-${id}`)?.remove();
+    loadedTabs.delete('appts'); loadAppts();
   } catch(e) { alert('Xəta: ' + e.message); }
 }
 
