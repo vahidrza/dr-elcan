@@ -9,6 +9,7 @@ Thumbs.db
 # Node
 node_modules/
 .env
+server/atlas-credentials.env
 
 # Logs
 *.log
