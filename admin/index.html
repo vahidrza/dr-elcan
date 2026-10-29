@@ -200,7 +200,7 @@ const loadedTabs = new Set();
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 async function api(path, method = 'GET', body = null) {
-  const opts = { method, headers: { Authorization: `Bearer ${token}` } };
+  const opts = { method, cache: 'no-store', headers: { Authorization: `Bearer ${token}` } };
   if (body instanceof FormData) {
     opts.body = body;
   } else if (body) {
