@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin | Baku Estetic Clinic</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f4f8;color:#2c3e50;min-height:100vh}
+img{max-width:100%;display:block}
+
+/* ── Auth ── */
+.auth-page{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#0d3d52,#1a6b8a)}
+.auth-box{background:#fff;border-radius:16px;padding:40px 36px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.auth-logo{font-size:1.5rem;font-weight:700;color:#1a6b8a;margin-bottom:20px;text-align:center}
+.auth-box h2{font-size:1.4rem;font-weight:700;margin-bottom:6px;text-align:center;color:#1a2332}
+.auth-sub{color:#7f8c8d;font-size:.9rem;text-align:center;margin-bottom:24px}
+
+/* ── Layout ── */
+.admin-header{background:#1a2332;color:#fff;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.admin-logo{font-size:1rem;font-weight:700;letter-spacing:.3px}
+.admin-logout{font-size:.82rem;cursor:pointer;background:none;border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:6px;color:rgba(255,255,255,.8);transition:.2s}
+.admin-logout:hover{background:rgba(255,255,255,.1)}
+.tabs{background:#fff;border-bottom:1px solid #dce6f0;display:flex;overflow-x:auto;padding:0 24px}
+.tab-btn{padding:14px 20px;font-size:.88rem;font-weight:600;color:#7f8c8d;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.2s}
+.tab-btn:hover{color:#1a6b8a}
+.tab-btn.active{color:#1a6b8a;border-bottom-color:#1a6b8a}
+.admin-body{max-width:1100px;margin:0 auto;padding:32px 24px}
+
+/* ── Cards ── */
+.card{background:#fff;border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 2px 12px rgba(26,107,138,.07);border:1px solid #dce6f0}
+.card-title{font-size:1.05rem;font-weight:700;color:#1a2332;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #f0f4f8}
+
+/* ── Gallery ── */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:8px}
+.gal-pair{background:#f8fafc;border:1px solid #dce6f0;border-radius:10px;overflow:hidden}
+.gal-pair-imgs{display:grid;grid-template-columns:1fr 1fr}
+.gal-pair-imgs img{width:100%;height:130px;object-fit:cover}
+.gal-img-wrap{display:flex;flex-direction:column}
+.gal-lbl{font-size:.7rem;font-weight:700;letter-spacing:1px;text-align:center;padding:4px;text-transform:uppercase}
+.gal-lbl.before{background:#e8f0fb;color:#1a6b8a}
+.gal-lbl.after{background:#e8f5e9;color:#2e7d32}
+.gal-caption{padding:8px 12px;font-size:.82rem;color:#6b7280}
+.gal-actions{padding:8px 12px 12px;display:flex;justify-content:flex-end}
+.empty-state{text-align:center;padding:48px 20px;color:#bdc3c7;font-size:1.1rem}
+
+/* ── Reviews ── */
+.rev-list{display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
+.rev-item{background:#f8fafc;border:1px solid #dce6f0;border-radius:10px;padding:16px;display:flex;align-items:flex-start;gap:16px}
+.rev-stars{color:#c9a96e;font-size:1.1rem;letter-spacing:2px;flex-shrink:0}
+.rev-body{flex:1;min-width:0}
+.rev-text{font-style:italic;margin-bottom:6px;font-size:.9rem;line-height:1.6}
+.rev-author{font-weight:600;font-size:.82rem;color:#1a6b8a}
+.rev-date{font-size:.76rem;color:#bdc3c7;margin-top:2px}
+
+/* ── Forms ── */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:600;color:#374151;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;padding:10px 14px;border:1.5px solid #dce6f0;border-radius:8px;font-family:inherit;font-size:.9rem;color:#2c3e50;background:#fff;transition:border-color .2s;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#1a6b8a}
+.field textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.upload-area{border:2px dashed #dce6f0;border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:.2s;background:#fafbfd}
+.upload-area:hover{border-color:#1a6b8a;background:#f0f7fb}
+.upload-area input{display:none}
+.up-label{font-size:.8rem;color:#9ca3af;margin-top:4px}
+.upload-preview{width:100%;height:110px;object-fit:cover;border-radius:6px;margin-top:10px;display:none}
+
+/* ── Buttons ── */
+.btn-primary{width:100%;padding:12px;background:#1a6b8a;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:.2s}
+.btn-primary:hover{background:#145572}
+.btn-primary:disabled{opacity:.6;cursor:default}
+.btn-sm{padding:6px 14px;border:none;border-radius:6px;font-family:inherit;font-size:.8rem;font-weight:600;cursor:pointer;transition:.2s}
+.btn-danger{background:#fee2e2;color:#dc2626}
+.btn-danger:hover{background:#dc2626;color:#fff}
+
+/* ── Alerts ── */
+.alert{padding:12px 16px;border-radius:8px;font-size:.88rem;font-weight:500;margin-bottom:16px}
+.alert-ok{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
+.alert-err{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.loading{text-align:center;padding:48px;color:#7f8c8d}
+
+@media(max-width:640px){
+  .form-row{grid-template-columns:1fr}
+  .admin-body{padding:20px 16px}
+  .card{padding:20px 16px}
+  .gal-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div id="app-login" class="auth-page">
+  <div class="auth-box">
+    <div class="auth-logo">🦷 Admin Panel</div>
+    <h2>Giriş</h2>
+    <p class="auth-sub">Baku Estetic Clinic</p>
+    <div id="login-error" class="alert alert-err" style="display:none"></div>
+    <form id="login-form">
+      <div class="field">
+        <label>Şifrə</label>
+        <input type="password" id="login-pw" required autofocus>
+      </div>
+      <button type="submit" id="login-btn" class="btn-primary">Daxil ol</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── DASHBOARD ── -->
+<div id="app-dashboard" style="display:none">
+  <header class="admin-header">
+    <div class="admin-logo">🦷 Baku Estetic Clinic — Admin</div>
+    <button class="admin-logout" onclick="logout()">Çıxış</button>
+  </header>
+  <nav class="tabs">
+    <button class="tab-btn active" id="tab-btn-gallery" onclick="showTab('gallery')">📷 Qalereya</button>
+    <button class="tab-btn" id="tab-btn-reviews" onclick="showTab('reviews')">⭐ Rəylər</button>
+  </nav>
+  <main class="admin-body">
+    <div id="tab-gallery">
+      <div id="gallery-loading" class="loading">Yüklənir...</div>
+      <div id="gallery-content" style="display:none"></div>
+    </div>
+    <div id="tab-reviews" style="display:none">
+      <div id="reviews-loading" class="loading">Yüklənir...</div>
+      <div id="reviews-content" style="display:none"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+const API = '/.netlify/functions';
+let token = sessionStorage.getItem('adminToken') || '';
+let galleryData = null;
+let reviewsData = null;
+const loadedTabs = new Set();
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function apiFetch(fn, method = 'GET', body = null) {
+  const opts = {
+    method,
+    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(`${API}/${fn}`, opts);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+  return data;
+}
+
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+function showMsg(elId, text, isError) {
+  const el = document.getElementById(elId);
+  el.textContent = text;
+  el.className = `alert ${isError ? 'alert-err' : 'alert-ok'}`;
+  el.style.display = 'block';
+}
+
+function previewFile(input, imgId, lblId) {
+  const img = document.getElementById(imgId);
+  const lbl = document.getElementById(lblId);
+  if (input.files && input.files[0]) {
+    const r = new FileReader();
+    r.onload = e => { img.src = e.target.result; img.style.display = 'block'; };
+    r.readAsDataURL(input.files[0]);
+    lbl.textContent = input.files[0].name;
+  }
+}
+
+// ── Auth ─────────────────────────────────────────────────────────────────────
+document.getElementById('login-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const pw = document.getElementById('login-pw').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+  const btn = document.getElementById('login-btn');
+  btn.textContent = 'Yüklənir...';
+  btn.disabled = true;
+  token = pw;
+  try {
+    await apiFetch('auth', 'POST', { password: pw });
+    sessionStorage.setItem('adminToken', pw);
+    showDashboard();
+  } catch (err) {
+    token = '';
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
+    btn.textContent = 'Daxil ol';
+    btn.disabled = false;
+  }
+});
+
+function logout() {
+  sessionStorage.removeItem('adminToken');
+  token = '';
+  galleryData = null;
+  reviewsData = null;
+  loadedTabs.clear();
+  document.getElementById('app-dashboard').style.display = 'none';
+  document.getElementById('app-login').style.display = 'flex';
+  document.getElementById('login-pw').value = '';
+}
+
+function showDashboard() {
+  document.getElementById('app-login').style.display = 'none';
+  document.getElementById('app-dashboard').style.display = 'block';
+  showTab('gallery');
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+function showTab(tab) {
+  ['gallery','reviews'].forEach(t => {
+    document.getElementById(`tab-${t}`).style.display = t === tab ? 'block' : 'none';
+    document.getElementById(`tab-btn-${t}`).classList.toggle('active', t === tab);
+  });
+  if (!loadedTabs.has(tab)) {
+    loadedTabs.add(tab);
+    if (tab === 'gallery') loadGallery();
+    if (tab === 'reviews') loadReviews();
+  }
+}
+
+// ── Gallery ───────────────────────────────────────────────────────────────────
+async function loadGallery() {
+  try {
+    galleryData = await apiFetch('gallery');
+    renderGallery();
+  } catch (e) {
+    document.getElementById('gallery-loading').textContent = 'Xəta: ' + e.message;
+  }
+}
+
+function renderGallery() {
+  document.getElementById('gallery-loading').style.display = 'none';
+  const content = document.getElementById('gallery-content');
+  content.style.display = 'block';
+  document.getElementById('tab-btn-gallery').textContent = `📷 Qalereya (${galleryData.length})`;
+
+  const grid = galleryData.length === 0
+    ? '<div class="empty-state">🖼️ Hələ foto yoxdur. Aşağıdan əlavə edin.</div>'
+    : `<div class="gal-grid">${galleryData.map(renderGalleryItem).join('')}</div>`;
+
+  content.innerHTML = `
+    <div class="card">
+      <div class="card-title">📷 Mövcud foto cütləri</div>
+      ${grid}
+    </div>
+    <div class="card">
+      <div class="card-title">➕ Yeni foto cütü əlavə et</div>
+      <form id="gallery-add-form" onsubmit="addGallery(event)">
+        <div class="form-row">
+          <div class="field">
+            <label>Öncəsi şəkli (ixtiyari)</label>
+            <div class="upload-area" onclick="document.getElementById('up-before').click()">
+              <input type="file" id="up-before" accept="image/jpeg,image/png,image/webp"
+                     onchange="previewFile(this,'prev-before','lbl-before')">
+              <div id="lbl-before">📁 Şəkil seç</div>
+              <div class="up-label">JPG / PNG / WEBP — max 5 MB</div>
+              <img id="prev-before" class="upload-preview" alt="">
+            </div>
+          </div>
+          <div class="field">
+            <label>Sonrası şəkli *</label>
+            <div class="upload-area" onclick="document.getElementById('up-after').click()">
+              <input type="file" id="up-after" accept="image/jpeg,image/png,image/webp" required
+                     onchange="previewFile(this,'prev-after','lbl-after')">
+              <div id="lbl-after">📁 Şəkil seç</div>
+              <div class="up-label">JPG / PNG / WEBP — max 5 MB</div>
+              <img id="prev-after" class="upload-preview" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Başlıq — Azərbaycanca</label>
+          <textarea name="caption_az" rows="2" placeholder="Azərbaycanca açıqlama..."></textarea>
+        </div>
+        <div class="field">
+          <label>Başlıq — Rusca</label>
+          <textarea name="caption_ru" rows="2" placeholder="Описание на русском..."></textarea>
+        </div>
+        <div class="field">
+          <label>Başlıq — İngiliscə</label>
+          <textarea name="caption_en" rows="2" placeholder="Caption in English..."></textarea>
+        </div>
+        <div id="gallery-add-msg" style="display:none"></div>
+        <button type="submit" id="gallery-submit-btn" class="btn-primary">Yüklə və əlavə et</button>
+      </form>
+    </div>`;
+}
+
+function renderGalleryItem(g) {
+  const cap = esc(g.caption_az || g.caption || '');
+  return `
+    <div class="gal-pair">
+      <div class="gal-pair-imgs">
+        <div class="gal-img-wrap">
+          <img src="/images/gallery/${esc(g.before)}" alt="Before" style="height:130px;object-fit:cover"
+               onerror="this.style.background='#f0f4f8';this.removeAttribute('src')">
+          <div class="gal-lbl before">Before</div>
+        </div>
+        <div class="gal-img-wrap">
+          <img src="/images/gallery/${esc(g.after)}" alt="After" style="height:130px;object-fit:cover"
+               onerror="this.style.background='#f0f4f8';this.removeAttribute('src')">
+          <div class="gal-lbl after">After</div>
+        </div>
+      </div>
+      ${cap ? `<div class="gal-caption">${cap}</div>` : ''}
+      <div class="gal-actions">
+        <button class="btn-sm btn-danger" onclick="deleteGallery('${esc(g.id)}')">🗑 Sil</button>
+      </div>
+    </div>`;
+}
+
+async function addGallery(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('gallery-submit-btn');
+  const beforeFile = document.getElementById('up-before').files[0];
+  const afterFile  = document.getElementById('up-after').files[0];
+
+  if (!afterFile) {
+    showMsg('gallery-add-msg', '"Sonra" şəkli mütləq lazımdır.', true);
+    return;
+  }
+  if (afterFile.size > 5 * 1024 * 1024 || (beforeFile && beforeFile.size > 5 * 1024 * 1024)) {
+    showMsg('gallery-add-msg', 'Şəkil ölçüsü 5 MB-dan çox ola bilməz.', true);
+    return;
+  }
+
+  btn.textContent = 'Yüklənir...';
+  btn.disabled = true;
+
+  try {
+    const ts = Date.now();
+    let beforeName = '';
+
+    if (beforeFile) {
+      const b64 = await fileToBase64(beforeFile);
+      const ext = beforeFile.name.split('.').pop().toLowerCase();
+      beforeName = `gal_${ts}_before.${ext}`;
+      await apiFetch('upload', 'POST', { path: `images/gallery/${beforeName}`, content: b64 });
+    }
+
+    const b64after = await fileToBase64(afterFile);
+    const extAfter = afterFile.name.split('.').pop().toLowerCase();
+    const afterName = `gal_${ts}_after.${extAfter}`;
+    await apiFetch('upload', 'POST', { path: `images/gallery/${afterName}`, content: b64after });
+
+    const item = {
+      id: String(ts),
+      before: beforeName,
+      after: afterName,
+      caption_az: form.querySelector('[name="caption_az"]').value.trim(),
+      caption_ru: form.querySelector('[name="caption_ru"]').value.trim(),
+      caption_en: form.querySelector('[name="caption_en"]').value.trim(),
+    };
+    await apiFetch('gallery', 'POST', item);
+
+    galleryData.push(item);
+    showMsg('gallery-add-msg', '✅ Foto əlavə edildi! Sayt ~1 dəqiqəyə yenilənəcək.', false);
+    form.reset();
+    ['prev-before','prev-after'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display='none'; });
+    ['lbl-before','lbl-after'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent='📁 Şəkil seç'; });
+    loadedTabs.delete('gallery');
+    loadGallery();
+  } catch (err) {
+    showMsg('gallery-add-msg', 'Xəta: ' + err.message, true);
+  } finally {
+    btn.textContent = 'Yüklə və əlavə et';
+    btn.disabled = false;
+  }
+}
+
+async function deleteGallery(id) {
+  if (!confirm('Bu foto cütünü silmək istəyirsiniz?')) return;
+  try {
+    await apiFetch('gallery', 'DELETE', { id });
+    galleryData = galleryData.filter(g => g.id !== id);
+    renderGallery();
+  } catch (e) {
+    alert('Xəta: ' + e.message);
+  }
+}
+
+// ── Reviews ───────────────────────────────────────────────────────────────────
+async function loadReviews() {
+  try {
+    reviewsData = await apiFetch('reviews');
+    renderReviews();
+  } catch (e) {
+    document.getElementById('reviews-loading').textContent = 'Xəta: ' + e.message;
+  }
+}
+
+function renderReviews() {
+  document.getElementById('reviews-loading').style.display = 'none';
+  const content = document.getElementById('reviews-content');
+  content.style.display = 'block';
+  document.getElementById('tab-btn-reviews').textContent = `⭐ Rəylər (${reviewsData.length})`;
+
+  const list = reviewsData.length === 0
+    ? '<div class="empty-state">💬 Hələ rəy yoxdur. Aşağıdan əlavə edin.</div>'
+    : `<div class="rev-list">${reviewsData.map(renderReviewItem).join('')}</div>`;
+
+  content.innerHTML = `
+    <div class="card">
+      <div class="card-title">⭐ Mövcud rəylər</div>
+      ${list}
+    </div>
+    <div class="card">
+      <div class="card-title">➕ Yeni rəy əlavə et</div>
+      <form id="reviews-add-form" onsubmit="addReview(event)">
+        <div class="field">
+          <label>Ulduz sayı</label>
+          <select name="stars">
+            ${[5,4,3,2,1].map(i => `<option value="${i}">${'★'.repeat(i)} (${i})</option>`).join('')}
+          </select>
+        </div>
+        <div class="field">
+          <label>Rəy mətni — Azərbaycanca *</label>
+          <textarea name="text_az" required placeholder="Xəstənin rəyini azərbaycanca yazın..."></textarea>
+        </div>
+        <div class="field">
+          <label>Rəy mətni — Rusca</label>
+          <textarea name="text_ru" placeholder="Отзыв на русском языке..."></textarea>
+        </div>
+        <div class="field">
+          <label>Rəy mətni — İngiliscə</label>
+          <textarea name="text_en" placeholder="Review in English..."></textarea>
+        </div>
+        <div class="field">
+          <label>Xəstənin adı *</label>
+          <input type="text" name="author" required placeholder="Məs: Aynur X., Rauf M.">
+        </div>
+        <div id="reviews-add-msg" style="display:none"></div>
+        <button type="submit" id="reviews-submit-btn" class="btn-primary">Rəy əlavə et</button>
+      </form>
+    </div>`;
+}
+
+function renderReviewItem(r) {
+  const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+  const text  = esc(r.text_az || r.text || '');
+  return `
+    <div class="rev-item">
+      <div>
+        <div class="rev-stars">${stars}</div>
+        <button class="btn-sm btn-danger" style="margin-top:8px" onclick="deleteReview('${esc(r.id)}')">🗑</button>
+      </div>
+      <div class="rev-body">
+        <div class="rev-text">"${text}"</div>
+        <div class="rev-author">— ${esc(r.author)}</div>
+        ${r.date ? `<div class="rev-date">${esc(r.date)}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+async function addReview(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = document.getElementById('reviews-submit-btn');
+  btn.textContent = 'Göndərilir...';
+  btn.disabled = true;
+
+  try {
+    const item = {
+      id:      String(Date.now()),
+      stars:   parseInt(form.querySelector('[name="stars"]').value),
+      text_az: form.querySelector('[name="text_az"]').value.trim(),
+      text_ru: form.querySelector('[name="text_ru"]').value.trim(),
+      text_en: form.querySelector('[name="text_en"]').value.trim(),
+      author:  form.querySelector('[name="author"]').value.trim(),
+      date:    new Date().toISOString().split('T')[0],
+    };
+    await apiFetch('reviews', 'POST', item);
+    reviewsData.push(item);
+    showMsg('reviews-add-msg', '✅ Rəy əlavə edildi! Sayt ~1 dəqiqəyə yenilənəcək.', false);
+    form.reset();
+    renderReviews();
+  } catch (err) {
+    showMsg('reviews-add-msg', 'Xəta: ' + err.message, true);
+  } finally {
+    btn.textContent = 'Rəy əlavə et';
+    btn.disabled = false;
+  }
+}
+
+async function deleteReview(id) {
+  if (!confirm('Bu rəyi silmək istəyirsiniz?')) return;
+  try {
+    await apiFetch('reviews', 'DELETE', { id });
+    reviewsData = reviewsData.filter(r => r.id !== id);
+    renderReviews();
+  } catch (e) {
+    alert('Xəta: ' + e.message);
+  }
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+if (token) {
+  showDashboard();
+}
+</script>
+</body>
+</html>
